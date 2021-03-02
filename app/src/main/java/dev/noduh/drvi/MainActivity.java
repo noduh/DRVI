@@ -3,6 +3,7 @@ package dev.noduh.drvi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -10,5 +11,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ImageView map = (ImageView) findViewById(R.id.gradientMap);
+        int imageResource = getResources().getIdentifier("@drawable/drvi_bwgradient", null, this.getPackageName());
+        map.setImageResource(imageResource);
     }
 }
