@@ -7,10 +7,10 @@ public class SoundPlay {
     private static ToneGenerator.Tone latestTone; // variable to hold the data associated to the tone that's currently being played
     public static Vibrator vibrator;
 
-    public void transitionSound (int newValue) { // simple transition to a new tone while being able to stop the previous tone (or vibrate if needed)
+    public static void transitionSound (int newValue) { // simple transition to a new tone while being able to stop the previous tone (or vibrate if needed)
         ToneGenerator.Tone newTone = generateSound(newValue); // gets the new playing tone, or null if it should vibrate instead
 
-        if (latestTone != null) { // only needs to end the tone if it's not already playing something
+        if (latestTone != null) { // only needs to end the tone if it's playing something
             latestTone.end();
         }
         latestTone = newTone; // setting the latest tone for future reference
@@ -33,6 +33,7 @@ public class SoundPlay {
         ToneGenerator.Tone tone = null;
 
         // work in progress
+        // note: if the value is -1 then stop the sound instead and return the latest tone
 
         return tone; // will return null if it should vibrate instead
     }
