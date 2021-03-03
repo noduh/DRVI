@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         int imageResource = getResources().getIdentifier("drvi_bwgradient", "drawable", MainActivity.this.getPackageName());
         map.setImageResource(imageResource);
 
-        if (ScreenStuff.bitmap == null) { ScreenStuff.bitmap = ((BitmapDrawable)map.getDrawable()).getBitmap(); } // if the bitmap hasn't been created yet, create it and push it to ScreenStuff
+        ScreenStuff.bitmap = ((BitmapDrawable)map.getDrawable()).getBitmap(); // create bitmap and push it to ScreenStuff
 
         SoundPlay.vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE); // setting the vibrator variable in SoundPlay to the right thing (must be done in MainActivity)
 
