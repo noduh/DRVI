@@ -62,15 +62,14 @@ public class ScreenStuff {
                 }
                 break;
         }
-//        Log.d(TAG, "\nscreenCoords " + xy + ": " + screenCoords + "\nbitmapCoords " + xy + ": " + bitmapCoords);
+        Log.d(TAG, "\nscreenCoords " + xy + ": " + screenCoords + "\nbitmapCoords " + xy + ": " + bitmapCoords);
         return bitmapCoords;
     }
 
     public static void setBoundaries () { // figuring out where the boundaries
-        double viewWidth = imageView.getMaxWidth();
-        double viewHeight = imageView.getMaxHeight();
+        double viewWidth = imageView.getWidth();
+        double viewHeight = imageView.getHeight();
         double mapWidth = bitmap.getWidth();
-        Log.d(TAG, "bitmap width = " + mapWidth);
         double mapHeight = bitmap.getHeight();
         double scale;
         int imageWidth;
@@ -89,16 +88,11 @@ public class ScreenStuff {
         }
 
         imageWidth = (int)(scale * mapWidth); // scale the width
-        Log.d(TAG, "imageWidth" + imageWidth);
         imageHeight = (int)(scale * mapHeight); // scale the height
 
-        leftLimit = (int)(viewWidth/2) - (imageWidth/2); // take the left half of the screen and subtract the part that's the image
-        Log.d(TAG, "leftLimit = " + leftLimit);
+        leftLimit = (int)(viewWidth/2) - (int)((0.0 + imageWidth)/2); // take the left half of the screen and subtract the part that's the image
         rightLimit = leftLimit + imageWidth;
-        Log.d(TAG, "rightLimit = " + rightLimit);
-        upLimit = (int)(viewHeight/2) - (imageHeight/2); // take the top half of the screen and subtract the part that's the image
-        Log.d(TAG, "upLimit = " + upLimit);
+        upLimit = (int)(viewHeight/2) - (int)((0.0 + imageHeight)/2); // take the top half of the screen and subtract the part that's the image
         downLimit = upLimit + imageHeight;
-        Log.d(TAG, "downLimit = " + downLimit);
     }
 }
