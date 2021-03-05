@@ -1,3 +1,8 @@
+/**
+ * From https://github.com/stefanhaustein/android-tone-generator/blob/master/core/src/main/java/org/kobjects/atg/ToneGenerator.java
+ * Used under the Apache License 2.0 - No NOTICE was present in the source.
+ */
+
 package dev.noduh.drvi;
 
 import android.media.AudioAttributes;
