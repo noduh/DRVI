@@ -22,19 +22,19 @@ public class ScreenStuff {
         view.setOnTouchListener((v, event) -> {
             switch (event.getAction()) { // test what action is happening
                 case MotionEvent.ACTION_DOWN: // if you touch the screen
-                case MotionEvent.ACTION_MOVE: // if you move your finger along it
+//                case MotionEvent.ACTION_MOVE: // if you move your finger along it
                     int x = Math.round(event.getX());
                     int y = Math.round(event.getY());
                     x = getBitmapCoords(x, "x");
                     y = getBitmapCoords(y, "y");
                     if (x != -1 && y != -1) { // if it's in bounds
-                        SoundPlay.transitionSound(getColor(x, y));
+                        SoundPlay.transitionSound(true, false, getColor(x, y));
                     } else {
-                        SoundPlay.transitionSound(-1); // stop the sound and no need to vibrate
+                        SoundPlay.transitionSound(false, true, -1); // stop the sound and no need to vibrate
                     }
                     break; // and then break
                 case MotionEvent.ACTION_UP: // when you lift up your finger
-                    SoundPlay.transitionSound(-1); // stop the sound and no need to vibrate
+                    SoundPlay.transitionSound(false, false, -1); // stop the sound and no need to vibrate
                     break;
             }
             return true; // done handling all the finger stuff
@@ -43,8 +43,6 @@ public class ScreenStuff {
 
     public static int getColor (int x, int y) {
         int color = bitmap.getPixel(x, y); // returns the color without pre-multiplying
-
-//        Log.d(TAG, "" + color); // logging color (unimportant line)
         return color;
     }
 
@@ -62,7 +60,6 @@ public class ScreenStuff {
                 }
                 break;
         }
-        Log.d(TAG, "\nscreenCoords " + xy + ": " + screenCoords + "\nbitmapCoords " + xy + ": " + bitmapCoords);
         return bitmapCoords;
     }
 
